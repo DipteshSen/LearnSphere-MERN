@@ -25,13 +25,13 @@ router.post('/addcourse', [
     body('duration', 'Course Duration is required').not().isEmpty()
 ], async function (req, res) {
     try {
-
+        var success=false;
         const { title, description, duration } = req.body;
 
         //if there are errors return BAD REQUEST
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json({success, errors: errors.array() });
         }
 
         const newCourse = new Courses({
@@ -42,7 +42,8 @@ router.post('/addcourse', [
         });
 
         const savedCourse = await newCourse.save();
-        res.json(savedCourse);
+        success=true;
+        res.json({success,savedCourse});
 
 
 
