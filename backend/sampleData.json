@@ -1,0 +1,38 @@
+//ROUTE 1 : Student SignUp Sample Data
+{
+    "name": "Diptesh Sen",
+    "email": "dipteshsen68@gmail.com",
+    "mobile": "9876",
+    "address": "3r1rbbr 15kduh",
+    "password": "1"
+}
+//ROUTE 2 : Student Login Sample Data 
+{
+    "email": "dipteshsen68@gmail.com",
+    "password": "1"
+}
+// //ROUTE 3 : Add Course Sample Data
+{
+    "title": ".NET Desktop Application",
+    "description": "C# and Visual Basic",
+    "duration": 3
+}
+// //ROUTE 4 :Enroll for a Course Sample Data
+{
+    "student": "66a26b1bcc56a1e52ad320ce",
+    "course": "66a7a596296d693324ba994b"
+}
+//ROUTE 5: Update Student Profile
+{
+    "_id": "66a26b1bcc56a1e52ad320ce",
+    "name": "Diptesh Sen",
+    "address": "test",
+    "mobile": "999999999",
+    "college": "abc sxholl"
+}
+
+//ROUTE 6: Admin Login
+{
+    "email": "admin@gmail.com",
+    "password": "1"
+}
