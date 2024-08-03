@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-const Admin = () => {
+import StudentDetails from './StudentDetails';
+const Admin = (props) => {
   const navigate = useNavigate();
   const adminToken = localStorage.getItem('adminToken');
   
@@ -13,7 +14,7 @@ const Admin = () => {
   return (
     <div className='container-fluid'>
       <h1>Admin Dashboard</h1>
-
+      <StudentDetails showAlert={props.showAlert} />
     </div>
   )
 }

@@ -22,7 +22,7 @@ const AdminNavbar = () => {
     <>
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">Admin Panel</Link>
+        <Link className="navbar-brand" to="/admin">Admin Panel</Link>
         <button ref={closeNav} className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
