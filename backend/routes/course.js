@@ -5,7 +5,7 @@ const Courses = require('../models/Courses');
 const Enrollment = require('../models/Enrollment');
 const { body, validationResult } = require('express-validator');
 
-//ROUTE 1: Get all courses using GET 'localhost:5000/courses/fetchall' NO LOGIN REQUIRED
+//ROUTE 1: Get all courses using GET 'localhost:5000/courses/fetchallcourses' NO LOGIN REQUIRED
 
 router.get('/fetchallcourses', async (req, res) => {
     try {

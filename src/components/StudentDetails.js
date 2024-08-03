@@ -54,8 +54,8 @@ const StudentDetails = (props) => {
                                 <td>{student.address}</td>
                                 <td>{student.college}</td>
                                 <td>
-                                    <button className="btn btn-sm btn-success"><i class="fa fa-edit" style={{fontSize:"16px"}}></i></button>
-                                    <button className="btn btn-sm btn-danger mx-2 my-2"><i class="fa fa-trash-o" style={{fontSize:"16px"}}></i></button>
+                                    <button className="btn btn-sm btn-success"><i classname="fa fa-edit" style={{fontSize:"16px"}}></i></button>
+                                    <button className="btn btn-sm btn-danger mx-2 my-2"><i classname="fa fa-trash-o" style={{fontSize:"16px"}}></i></button>
                                 </td>
                             </tr>
                         ))}

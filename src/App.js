@@ -10,6 +10,8 @@ import Profile from './components/Profile';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import AdminLogin from './components/AdminLogin';
 import Admin from './components/Admin';
+import Courses from './components/Courses';
+import ChangePassword from './components/ChangePassword';
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -34,6 +36,8 @@ function App() {
         <Route exact path="/profile" element={<Profile showAlert={showAlert} />} />
         <Route exact path="/adminlogin" element={<AdminLogin showAlert={showAlert} />} />
         <Route exact path="/admin" element={<Admin showAlert={showAlert} />} />
+        <Route exact path="/admin/courses" element={<Courses showAlert={showAlert} />} />
+        <Route exact path="/admin/changepassword" element={<ChangePassword showAlert={showAlert} />} />
       </Routes>
     </>
   );

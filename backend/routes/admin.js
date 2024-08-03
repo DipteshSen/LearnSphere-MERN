@@ -74,5 +74,40 @@ router.get('/getallstudents',async function(req, res){
 
 })
 
+//ROUTE 4 : Change Password.. POST-> 'localhost:5000/admin/changepassword'
+router.post('/changepassword',fetchAdmin,
+    [
+        body('oldpassword','Please enter your current password').exists(),
+        body('newpassword','Please enter your new password').exists(),
+        body('confirmpassword','Confirm Password must be equal to new password').exists().custom((value, { req }) => value === req.body.newpassword)
+    ] ,async function(req, res){
+        success=false;
+        const errors=  validationResult(req);
+        if(!errors.isEmpty()){
+            return res.status(400).json({success,message:errors.array()[0].msg, errors: errors.array()});
+        }
+
+        try{
+            //check if old password is correct
+            const admin = await AdminSchema.findById(req.admin.id);
+            if(admin.password!=req.body.oldpassword){
+                return res.status(400).json({success, message:"Old Password does not match"});
+            }
+
+            //change password
+            admin.password=req.body.newpassword;
+            await admin.save();
+            success=true;
+            res.json({success, message:"Password changed successfully"});
+
+
+
+        }catch(err){
+            console.error(err.message);
+            res.status(500).json({success, message:"Server Error"});
+        }
+
+});
+
 
 module.exports= router;
