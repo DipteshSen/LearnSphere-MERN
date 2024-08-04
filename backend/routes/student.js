@@ -124,6 +124,20 @@ router.put('/update', async (req, res)=>{
     }
 })
 
+//ROUTE 5: Delete Student Accnt by Id... POST->'localhost:5000/student/delete
+router.delete('/delete', async function(req, res){
+    try{
+        const student = await Student.findByIdAndDelete(req.body.id);
+        if(!student){
+            return res.status(404).json({success:false, message: 'Student not found'});
+        }
+        res.json({success:true, message: 'Student\'s account deleted'});
+    }catch(err){
+        console.error(err);
+        res.status(500).send({success:false,message:'Server Error'});
+    }
+});
+
 
 module.exports = router;
 

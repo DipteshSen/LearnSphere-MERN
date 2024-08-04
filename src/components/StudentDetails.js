@@ -29,6 +29,11 @@ const StudentDetails = (props) => {
             });
     }, []);
 
+
+    const deleteStudent= (sid)=>{
+        console.log(sid+' getting deleted');
+    }
+
     return (
         <div>
             <div className="table-responsive">
@@ -54,8 +59,8 @@ const StudentDetails = (props) => {
                                 <td>{student.address}</td>
                                 <td>{student.college}</td>
                                 <td>
-                                    <button className="btn btn-sm btn-success"><i classname="fa fa-edit" style={{fontSize:"16px"}}></i></button>
-                                    <button className="btn btn-sm btn-danger mx-2 my-2"><i classname="fa fa-trash-o" style={{fontSize:"16px"}}></i></button>
+                                    <button className="btn btn-sm btn-success"><i className="fa fa-edit" style={{fontSize:"16px"}}></i></button>
+                                    <button onClick={()=>{deleteStudent(student._id)}} className="btn btn-sm btn-danger mx-2 my-2"><i className="fa fa-trash-o" style={{fontSize:"16px"}}></i></button>
                                 </td>
                             </tr>
                         ))}

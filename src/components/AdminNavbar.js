@@ -29,14 +29,15 @@ const AdminNavbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link onClick={handleClick} className="nav-link active" aria-current="page" to="/">Home</Link>
-              </li>
-              <li className="nav-item">
-                <Link onClick={handleClick} className="nav-link active" aria-current="page" to="/admin/changepassword">Change Password</Link>
+                <Link onClick={handleClick} className="nav-link active" aria-current="page" to="/admin">Home</Link>
               </li>
               <li className="nav-item">
                 <Link onClick={handleClick} className="nav-link active" aria-current="page" to="/admin/courses">Courses</Link>
               </li>
+              <li className="nav-item">
+                <Link onClick={handleClick} className="nav-link active" aria-current="page" to="/admin/changepassword">Change Password</Link>
+              </li>
+
 
             </ul>
             <form className="d-flex">

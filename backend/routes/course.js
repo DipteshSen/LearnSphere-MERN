@@ -111,7 +111,7 @@ router.post('/enrolledcourses', fetchUser, async (req, res) => {
 });
 
 
-//ROUTE 5: Fetch Courses by CourseID
+//ROUTE 5: Fetch Courses by CourseID...POST->'localhost:5000/courses/fetchcourse'
 router.post('/fetchcourse', async function(req, res){
     try{
         const course = await Courses.findById(req.body.id);
@@ -122,5 +122,34 @@ router.post('/fetchcourse', async function(req, res){
     }
 });
 
+
+//ROUTE 6: Delete Course by Id... POST->'localhost:5000/courses/delete
+    router.delete('/delete', async function(req, res){
+    try{
+        const course = await Courses.findByIdAndDelete(req.body.id);
+        if(!course){
+            return res.status(404).json({success:false, message: 'Course not found'});
+        }
+        res.json({success:true, message: 'Course deleted'});
+    }catch(err){
+        console.error(err);
+        res.status(500).send({success:false,message:'Server Error'});
+    }
+});
+
+
+//ROUTE 7: Update Course...POST->'localhost:5000/courses/update'
+router.put('/update',async function (req, res) {
+    var success=false;
+    try{
+        const course = await Courses.findByIdAndUpdate(req.body._id, req.body, {new: true});
+        success=true;
+        res.json({success,message:"Course updated Successfully!",course});
+
+    }catch(err){
+        console.error(err);
+        res.status(500).send({success,message:'Server Error'});
+    }
+});
 
 module.exports = router;
