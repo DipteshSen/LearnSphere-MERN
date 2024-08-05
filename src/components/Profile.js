@@ -9,21 +9,21 @@ const Profile = (props) => {
 
 
     const onChange = (e) => {
-        document.getElementById('updateButton').disabled=false;
+        document.getElementById('updateButton').disabled = false;
         setStudentData({ ...studentData, [e.target.name]: e.target.value });
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        document.getElementById('updateButton').disabled=true;
-        const { _id, name, address, mobile, college } = studentData;
+        document.getElementById('updateButton').disabled = true;
+        const { _id, name, password, address, mobile, college } = studentData;
         //API call to update student details
         fetch('http://localhost:5000/student/update', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ _id, name, address, mobile, college }),
+            body: JSON.stringify({ _id, name, password, address, mobile, college }),
         })
             .then(res => res.json())
             .then(data => {
@@ -60,8 +60,8 @@ const Profile = (props) => {
                 const userData = await userRes.json();
                 setStudentData(userData);
 
-                
-                
+
+
             } catch (error) {
                 console.error('Error:', error);
             }
@@ -71,7 +71,7 @@ const Profile = (props) => {
         fetchUserData();
 
 
-        
+
 
 
 
@@ -93,6 +93,10 @@ const Profile = (props) => {
                             <input onChange={onChange} name='email' disabled type="email" id="studentEmail" className="form-control" value={studentData?.email || ''} placeholder="Student Email" />
                         </div>
                         <div className="mb-3">
+                            <label htmlFor="password" className="form-label">Passsword</label>
+                            <input onChange={onChange} name='password' type="text" id="password" className="form-control" value={studentData?.password || ''} placeholder="Student Password" />
+                        </div>
+                        <div className="mb-3">
                             <label htmlFor="studentName" className="form-label">Address</label>
                             <input onChange={onChange} name='address' type="text" id="address" className="form-control" value={studentData?.address || ''} placeholder="Student Address" />
                         </div>
@@ -112,8 +116,8 @@ const Profile = (props) => {
             </div>
 
 
-        <MyCourses showAlert={props.showAlert}/>
-            
+            <MyCourses showAlert={props.showAlert} />
+
         </>
     );
 }
