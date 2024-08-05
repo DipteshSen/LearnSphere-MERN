@@ -22,7 +22,8 @@ const MyCourses = (props) => {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'auth-token': authtoken,
+                        /* 'auth-token': `${authtoken}`, */
+                        'auth-token': authtoken
                     },
                 });
                 const coursesData = await coursesRes.json();
@@ -56,13 +57,13 @@ const MyCourses = (props) => {
         <div className='container my-5'>
             <h2>My Courses</h2>
             <div className="row">
-                {myCourses.map(course => (
-                    <div className="col-md-4 mb-4" key={course._id}>
+                {myCourses.map((course,index) => (
+                    <div className="col-md-4 mb-4" key={course?._id||index}>
                         <div className="card">
                             <div className="card-body">
-                                <h5 className="card-title">{course.title}</h5>
-                                <p className="card-text">{course.description}</p>
-                                <p className="card-text"><small className="text-muted">Duration: {course.duration} months</small></p>
+                                <h5 className="card-title">{course?.title||'Unknown name'}</h5>
+                                <p className="card-text">{course?.description || 'Unknown Description'}</p>
+                                <p className="card-text"><small className="text-muted">Duration: {course?.duration || 'Self Paced'} months</small></p>
                             </div>
                         </div>
                     </div>

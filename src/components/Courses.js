@@ -134,6 +134,13 @@ const Courses = (props) => {
         }
     };
 
+    const [searchTerm, setSearchTerm] = useState('');
+    // Filter students based on search term
+    const filteredCourses = courses.filter(course =>
+        course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        course.description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <>
             <button ref={modalBtn} style={{ display: "none" }} type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -197,10 +204,20 @@ const Courses = (props) => {
             </div>
 
             <div className='container my-4'>
+                <div className="mb-3">
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Search courses..."
+                        value={searchTerm}
+                        onChange={e => setSearchTerm(e.target.value)}
+                    />
+                </div>
+
                 <h2>Our Courses</h2>
                 <div className="row">
-                    {courses.length > 0 ? (
-                        courses.map((course, index) => (
+                    {filteredCourses.length > 0 ? (
+                        filteredCourses.map((course, index) => (
                             <div className="col-md-4 mb-4" key={course?._id || index}>
                                 <div className="card">
                                     <div className="card-body">

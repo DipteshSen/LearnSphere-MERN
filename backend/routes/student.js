@@ -138,6 +138,20 @@ router.delete('/delete', async function(req, res){
     }
 });
 
+///ROUTE 6: Fetch Student By Id... POST-> 'localhost:5000/student/fetchstudentbyid'
+router.post('/fetchstudentbyid',async function(req, res) {
+    try {
+        const student = await Student.findById(req.body.id);
+        if (!student) {
+            return res.status(404).json({ success: false, message: 'Student not found' });
+        }
+        res.json({ success: true, student });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ success: false, message: 'Server Error' });
+    }
+})
+
 
 module.exports = router;
 

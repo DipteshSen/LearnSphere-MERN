@@ -43,7 +43,7 @@ const HeroSection = (props) => {
       })
       .catch(error => console.error('Error:', error));
 
-      
+
 
     // Fetching courses data from database
     fetch('http://localhost:5000/courses/fetchallcourses', {
@@ -73,10 +73,10 @@ const HeroSection = (props) => {
       .then(data => {
         //console.log(data);
         if (data.success) {
-          props.showAlert('success','Registered successfully!');
+          props.showAlert('success', 'Registered successfully!');
           setEnrolledCourses([...enrolledCourses, { course: courseId }]);
         } else {
-          props.showAlert('danger',data.message);
+          props.showAlert('danger', data.message);
         }
       })
       .catch(error => console.error('Error:', error));
@@ -85,6 +85,13 @@ const HeroSection = (props) => {
   const isEnrolled = (courseId) => {
     return enrolledCourses.some(data => data.course === courseId);
   };
+
+  const [searchTerm, setSearchTerm] = useState('');
+    // Filter students based on search term
+    const filteredCourses = courses.filter(course =>
+        course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        course.description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
   return (
     <>
@@ -95,9 +102,18 @@ const HeroSection = (props) => {
       </div>
 
       <div className='container my-4'>
+        <div className="mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search courses..."
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+          />
+        </div>
         <h2>Our Courses</h2>
         <div className="row">
-          {courses.map(course => (
+          {filteredCourses.map(course => (
             <div className="col-md-4 mb-4" key={course._id}>
               <div className="card">
                 <div className="card-body">
